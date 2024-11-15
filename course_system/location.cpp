@@ -13,7 +13,7 @@ void Building::addClassroom(unique_ptr<Classroom> classroom)
     classrooms.push_back(std::move(classroom));
 }
 
-const std::vector<unique_ptr<Classroom>>& Building::getClassrooms() const
+const vector<unique_ptr<Classroom>>& Building::getClassrooms() const
 { return classrooms; }
 
 Campus* Building::getCampus() const
