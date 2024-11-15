@@ -12,12 +12,14 @@ SOURCES += \
     location.cpp \
     main.cpp \
     mainwindow.cpp \
-    schedulingentity.cpp
+    schedulingentity.cpp \
+    total.cpp
 
 HEADERS += \
     location.h \
     mainwindow.h \
-    schedulingentity.h
+    schedulingentity.h \
+    total.h
 
 FORMS += \
     mainwindow.ui

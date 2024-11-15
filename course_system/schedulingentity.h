@@ -20,11 +20,14 @@ public:
 class Teacher : public School_SchedulingEntity
 {
 private:
+    string job_num;
     vector<pair<int, int>> busy_time;
     vector<unique_ptr<Course>> course;
 public:
-    Teacher(int id, string name) : School_SchedulingEntity(id, std::move(name)) {}
-    Teacher(int id, string name, vector<pair<int, int>>& busy_time) : School_SchedulingEntity(id, std::move(name)), busy_time(busy_time) {}
+    Teacher(int id, string name, string job_num)
+        : School_SchedulingEntity(id, std::move(name)), job_num(job_num) {}
+    Teacher(int id, string name, string job_num, vector<pair<int, int>>& busy_time)
+        : School_SchedulingEntity(id, std::move(name)), job_num(job_num), busy_time(busy_time) {}
 
 };
 

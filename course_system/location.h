@@ -4,14 +4,19 @@
 #include <string>
 #include <vector>
 #include <unordered_map>
-#include <map>
 #include <memory>
+#include <map>
+//#include "total.h"
 using std::string;
 using std::vector;
 using std::unique_ptr;
+using std::map;
+using std::cout;
+using std::endl;
 
 class Building;
 class Classroom;
+class School;
 
 class Location
 {
@@ -30,25 +35,30 @@ protected:
 class Campus : public Location
 {
 private:
-    vector<unique_ptr<Building>> buildings;
+    //vector<unique_ptr<Building>> buildings;
+    map<string, unique_ptr<Building>> buildings;
+    School* school;
 public:
-    Campus(int id, string name): Location(id, std::move(name)) {}
+    Campus(int id, string name, School* school): Location(id, std::move(name)), school(school) {}
     void addBuilding(unique_ptr<Building>);
-    const vector<unique_ptr<Building>>& getBuildings();
+    //const vector<unique_ptr<Building>>& getBuildings();
+    void printAllBuildings() const;
 };
 
 //教学楼
 class Building : public Location
 {
 private:
-    vector<unique_ptr<Classroom>> classrooms;
+    //vector<unique_ptr<Classroom>> classrooms;
+    map<string, unique_ptr<Classroom>> classrooms;
     Campus* campus;
 public:
-    Building(int id, string name, Campus* campus): Location(id, std::move(name)), campus(campus){}
+    Building(int id, string name, Campus* campus): Location(id, std::move(name)), campus(campus) {}
 
     void addClassroom(unique_ptr<Classroom> classroom);
 
-    const vector<unique_ptr<Classroom>>& getClassrooms() const;
+    //const vector<unique_ptr<Classroom>>& getClassrooms() const;
+    void printAllClassrooms() const;
     Campus* getCampus() const;
 };
 
